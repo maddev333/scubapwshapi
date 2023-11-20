@@ -1,0 +1,6 @@
+@scubapwshapi_HostAddress = http://localhost:5048
+
+GET {{scubapwshapi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
