@@ -7,12 +7,12 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 
 RUN  Invoke-WebRequest `
             -UseBasicParsing `
-            -Uri https://github.com/cisagov/ScubaGear/releases/download/0.3.0/ScubaGear-0.3.0.zip `
+            -Uri https://github.com/cisagov/ScubaGear/releases/download/1.0.0/ScubaGear-1.0.0.zip `
             -OutFile 'c:\\scubagear.zip'; `
         Expand-Archive -LiteralPath "c:\\scubagear.zip" -DestinationPath "c:\\scuba"; `
 		Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force; `
-		c:\\scuba\ScubaGear-0.3.0\\SetUp.ps1; `
-		Import-Module -Name 'c:\\scuba\\ScubaGear-0.3.0\\PowerShell\\ScubaGear';  
+		c:\\scuba\ScubaGear-1.0.0\\SetUp.ps1; `
+		Import-Module -Name 'c:\\scuba\\ScubaGear-1.0.0\\PowerShell\\ScubaGear';  
 		
 SHELL ["cmd", "/S", "/C"]
 
