@@ -12,6 +12,7 @@ RUN  Invoke-WebRequest `
         Expand-Archive -LiteralPath "c:\\scubagear.zip" -DestinationPath "c:\\scuba"; `
 		Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force; `
     	c:\\scuba\ScubaGear-1.0.0\\SetUp.ps1; `
+        Invoke-WebRequest -UseBasicParsing -Uri https://raw.githubusercontent.com/maddev333/scubapwshapi/main/Connection.ps1 -OutFile C:\\scuba\\ScubaGear-1.0.0\\Powershell\\ScubaGear\\Modules\\Connection\\Connection.ps1; `
     	Import-Module -Name C:\\scuba\\ScubaGear-1.0.0\\PowerShell\\ScubaGear;  
         #$cert = New-SelfSignedCertificate -Subject "CN=scuba" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256; `
 		#Export-Certificate -Cert $cert -FilePath "C:\scuba.cer";
@@ -34,8 +35,8 @@ RUN dotnet publish -c Release -o out
 #COPY --from=build /app/out .
 
 # Expose the port
-EXPOSE 8080
-
+#EXPOSE 8080
+ENV Organization="msft365dev.onmicrosoft.com"
 # Start the application
 ENTRYPOINT ["powershell", "c:/app/runScuba.ps1"]
 
